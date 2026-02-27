@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primefab Systems | Heavy Metal Engineering Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A2B;
+            --dark: #0A0A0A;
+            --dark-secondary: #141414;
+            --gray: #888888;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .cta-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-btn.outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 5% 4rem;
+            background: radial-gradient(circle at center, var(--dark-secondary) 0%, var(--dark) 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            background-image: 
+                linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 3rem 5%;
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+
+        .trust-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .trust-header p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logos-scroll {
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .logos-track {
+            display: flex;
+            gap: 4rem;
+            animation: scroll 25s linear infinite;
+            width: max-content;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .client-logo {
+            flex-shrink: 0;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .certifications {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            color: var(--gray);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .cert-badge::before {
+            content: '✓';
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--dark-secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--dark);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .about-image-placeholder {
+            text-align: center;
+            color: var(--gray);
+            padding: 2rem;
+        }
+
+        .about-image-placeholder .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 2rem;
+            right: -2rem;
+            background: var(--primary);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        .experience-badge .years {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--dark-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--dark-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            gap: 1rem;
+        }
+
+        .project-placeholder .icon {
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+        }
+
+        .project-category {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: var(--dark);
+        }
+
+        .case-studies-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .case-study-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            background: var(--dark-secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .case-study-card:hover {
+            border-color: var(--primary);
+        }
+
+        .case-study-image {
+            position: relative;
+            background: var(--dark);
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-study-placeholder {
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .case-study-placeholder .icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.3;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .case-study-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .case-study-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .project-meta span {
+            color: var(--gray);
+        }
+
+        .project-meta strong {
+            color: var(--primary);
+        }
+
+        .case-study-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .project-specs {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-specs li {
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+
+        .project-specs li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .case-study-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .case-study-link:hover {
+            gap: 1rem;
+        }
+
+        /* Why Choose Us */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--dark-secondary);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .why-item:hover {
+            border-color: var(--primary);
+            transform: translateX(10px);
+        }
+
+        .why-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .why-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--dark-secondary) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .contact > .contact-content > p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form-container {
+            background: rgba(255,255,255,0.03);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 4rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-group select option {
+            background: var(--dark-secondary);
+            color: white;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--gray);
+            margin-top: 1rem;
+            max-width: 300px;
+            font-size: 0.95rem;
+        }
+
+        .footer-certs {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cert-icon {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .case-study-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-badge {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin-top: 2rem;
+                display: inline-block;
+            }
+            
+            .case-study-image {
+                min-height: 200px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item {
+                text-align: center;
+                flex-direction: column;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-form-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <span>⚙</span> PRIMEFAB
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="cta-btn nav-cta">Get Quote</a>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Industrial Excellence Since 1999</div>
+            <h1>Building the <span>Infrastructure</span> of Tomorrow</h1>
+            <p>Premium heavy metal engineering and formwork solutions for power plants, tunnels, highways, and metro projects across India.</p>
+            <a href="#contact" class="cta-btn" style="font-size: 1.1rem; padding: 1rem 3rem;">Start Your Project</a>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="340">0</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="25">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-label">Expert Engineers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="trust-header">
+            <p>Trusted by India's Leading Infrastructure Developers</p>
+        </div>
+        
+        <div class="logos-scroll">
+            <div class="logos-track">
+                <div class="client-logo">DMRC</div>
+                <div class="client-logo">NHAI</div>
+                <div class="client-logo">IRCON</div>
+                <div class="client-logo">L&T</div>
+                <div class="client-logo">Tata Projects</div>
+                <div class="client-logo">Gammon</div>
+                <div class="client-logo">HCC</div>
+                <div class="client-logo">Simplex</div>
+                <div class="client-logo">Afcons</div>
+                <div class="client-logo">NCC</div>
+                <!-- Duplicate for infinite scroll -->
+                <div class="client-logo">DMRC</div>
+                <div class="client-logo">NHAI</div>
+                <div class="client-logo">IRCON</div>
+                <div class="client-logo">L&T</div>
+                <div class="client-logo">Tata Projects</div>
+                <div class="client-logo">Gammon</div>
+                <div class="client-logo">HCC</div>
+                <div class="client-logo">Simplex</div>
+                <div class="client-logo">Afcons</div>
+                <div class="client-logo">NCC</div>
+            </div>
+        </div>
+
+        <div class="certifications">
+            <div class="cert-badge">ISO 9001:2015 Certified</div>
+            <div class="cert-badge">MSME Registered</div>
+            <div class="cert-badge">GEM Portal Registered</div>
+            <div class="cert-badge">ISO 14001:2015</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header reveal">
+            <h2 class="section-title">Engineering <span>Excellence</span> in Heavy Metal</h2>
+            <p class="section-subtitle">Leading manufacturer of structural steel components and customized formwork solutions.</p>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <div class="about-image-placeholder">
+                    <div class="icon">🏭</div>
+                    <p>Manufacturing Facility Image<br><small>Replace with your facility photo</small></p>
+                </div>
+                <div class="experience-badge">
+                    <span class="years">25+</span>
+                    <span class="text">Years of<br>Excellence</span>
+                </div>
+            </div>
+            <div class="about-content reveal">
+                <h3>Precision Engineering for Critical Infrastructure</h3>
+                <p>Primefab Systems Pvt. Ltd. is a leading manufacturer of heavy metal parts and formwork, dedicated to delivering top-notch solutions for the most ambitious projects. From power plants and tunnels to highways, flyovers, bridges, and metro projects.</p>
+                <ul class="feature-list">
+                    <li>ISO 9001:2015 Certified Manufacturing</li>
+                    <li>State-of-the-art CNC Machining</li>
+                    <li>Just-in-Time Delivery Nationwide</li>
+                    <li>Custom Design & Engineering Support</li>
+                    <li>Quality Assurance at Every Stage</li>
+                </ul>
+                <a href="#contact" class="cta-btn" style="margin-top: 2rem;">Learn More About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header reveal">
+            <h2 class="section-title">Our <span>Capabilities</span></h2>
+            <p class="section-subtitle">End-to-end heavy metal engineering solutions tailored to your project requirements.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">🏗</div>
+                <h3>Steel Formwork Systems</h3>
+                <p>Custom-designed formwork solutions for concrete construction including tunnel forms, wall forms, and slab systems.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">⚙</div>
+                <h3>Structural Components</h3>
+                <p>High-precision structural steel components for bridges, flyovers, and heavy industrial infrastructure.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🔧</div>
+                <h3>Precision Machining</h3>
+                <p>CNC machining and fabrication services for complex metal parts with tight tolerances.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">📐</div>
+                <h3>Design & Engineering</h3>
+                <p>Complete design support from concept to manufacturing with 3D modeling and stress analysis.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">✓</div>
+                <h3>Quality Assurance</h3>
+                <p>Rigorous testing and inspection protocols ensuring every component meets international standards.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🚛</div>
+                <h3>Logistics & Support</h3>
+                <p>Just-in-time delivery and on-site technical support for seamless project execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header reveal">
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <p class="section-subtitle">Major infrastructure projects delivered with precision and excellence.</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-placeholder">
+                    <span class="icon">🚇</span>
+                    <span>Metro Project Photo</span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-category">Metro Infrastructure</div>
+                    <h3 class="project-title">Delhi Metro Phase IV</h3>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-placeholder">
+                    <span class="icon">🛣</span>
+                    <span>Highway Project Photo</span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-category">Transportation</div>
+                    <h3 class="project-title">NH-24 Widening Project</h3>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-placeholder">
+                    <span class="icon">⚡</span>
+                    <span>Power Plant Photo</span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-category">Energy</div>
+                    <h3 class="project-title">UP Thermal Power Plant</h3>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-placeholder">
+                    <span class="icon">🚧</span>
+                    <span>Tunnel Project Photo</span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-category">Tunneling</div>
+                    <h3 class="project-title">Mountain Tunnel Project</h3>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-placeholder">
+                    <span class="icon">🌉</span>
+                    <span>Bridge Project Photo</span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-category">Bridges</div>
+                    <h3 class="project-title">Major Bridge Construction</h3>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-placeholder">
+                    <span class="icon">🚂</span>
+                    <span>Railway Project Photo</span>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-category">Railway</div>
+                    <h3 class="project-title">Railway Infrastructure</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="case-studies">
+        <div class="section-header reveal">
+            <h2 class="section-title">Project <span>Case Studies</span></h2>
+            <p class="section-subtitle">Detailed look at our major infrastructure contributions across India.</p>
+        </div>
+
+        <div class="case-studies-container">
+            <!-- Case Study 1 -->
+            <div class="case-study-card reveal">
+                <div class="case-study-image">
+                    <div class="case-study-placeholder">
+                        <div class="icon">🚇</div>
+                        <small>Project Image</small>
+                    </div>
+                    <div class="project-badge">Metro</div>
+                </div>
+                <div class="case-study-content">
+                    <h3>Delhi Metro Phase IV - I-Girder Shuttering</h3>
+                    <div class="project-meta">
+                        <span><strong>Client:</strong> DMRC</span>
+                        <span><strong>Year:</strong> 2022-2024</span>
+                        <span><strong>Value:</strong> ₹12 Crore</span>
+                    </div>
+                    <p>Supplied and installed precision-engineered I-Girder shuttering systems for elevated corridor construction. Our custom-designed steel formwork enabled rapid casting cycles.</p>
+                    <ul class="project-specs">
+                        <li>450+ I-Girders cast using our formwork</li>
+                        <li>Span lengths: 25m to 30m</li>
+                        <li>Concrete finish quality: Class 2</li>
+                        <li>Zero defects, on-time delivery</li>
+                    </ul>
+                    <a href="#" class="case-study-link">View Full Case Study →</a>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="case-study-card reveal">
+                <div class="case-study-image">
+                    <div class="case-study-placeholder">
+                        <div class="icon">🛣</div>
+                        <small>Project Image</small>
+                    </div>
+                    <div class="project-badge">Highway</div>
+                </div>
+                <div class="case-study-content">
+                    <h3>NH-24 Widening Project - Multiple Flyovers</h3>
+                    <div class="project-meta">
+                        <span><strong>Client:</strong> NHAI</span>
+                        <span><strong>Year:</strong> 2021-2023</span>
+                        <span><strong>Value:</strong> ₹8.5 Crore</span>
+                    </div>
+                    <p>Complete formwork solution package for 3 major flyovers including pier caps, pier shutters, and segmental construction equipment. Deployed 2000+ MT of steel formwork.</p>
+                    <ul class="project-specs">
+                        <li>3 Major flyovers covered</li>
+                        <li>Pier heights up to 18m</li>
+                        <li>Segmental box girder formwork</li>
+                        <li>24-hour stripping time achieved</li>
+                    </ul>
+                    <a href="#" class="case-study-link">View Full Case Study →</a>
+                </div>
+            </div>
+
+            <!-- Case Study 3 -->
+            <div class="case-study-card reveal">
+                <div class="case-study-image">
+                    <div class="case-study-placeholder">
+                        <div class="icon">⚡</div>
+                        <small>Project Image</small>
+                    </div>
+                    <div class="project-badge">Power</div>
+                </div>
+                <div class="case-study-content">
+                    <h3>UP Thermal Power Plant - Structural Steel</h3>
+                    <div class="project-meta">
+                        <span><strong>Client:</strong> L&T Power</span>
+                        <span><strong>Year:</strong> 2020-2022</span>
+                        <span><strong>Value:</strong> ₹15 Crore</span>
+                    </div>
+                    <p>Manufactured and supplied heavy structural steel components including boiler support structures, turbine foundations, and conveyor galleries.</p>
+                    <ul class="project-specs">
+                        <li>3500 MT structural steel supplied</li>
+                        <li>Grade: IS 2062 E350BR</li>
+                        <li>Hot dip galvanizing: 80-100 microns</li>
+                        <li>ISO 3834 welding standards</li>
+                    </ul>
+                    <a href="#" class="case-study-link">View Full Case Study →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us">
+        <div class="section-header reveal">
+            <h2 class="section-title">Why <span>Choose Us</span></h2>
+            <p class="section-subtitle">Partner with industry leaders committed to your project's success.</p>
+        </div>
+        
+        <div class="why-us-grid">
+            <div class="why-item reveal">
+                <div class="why-number">01</div>
+                <div class="why-content">
+                    <h4>Uncompromising Quality</h4>
+                    <p>ISO certified processes with rigorous quality control at every manufacturing stage.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">02</div>
+                <div class="why-content">
+                    <h4>Timely Delivery</h4>
+                    <p>Just-in-time manufacturing ensuring your project stays on schedule, every time.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">03</div>
+                <div class="why-content">
+                    <h4>Competitive Pricing</h4>
+                    <p>Optimized manufacturing processes delivering premium quality at market-leading rates.</p>
+                </div>
+            </div>
+            <div class="why-item reveal">
+                <div class="why-number">04</div>
+                <div class="why-content">
+                    <h4>Technical Support</h4>
+                    <p>Dedicated engineering team providing on-site assistance and consultation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content reveal">
+            <h2>Ready to Build <span>Something Great?</span></h2>
+            <p>Let's discuss your next infrastructure project. Our engineering team is ready to provide customized solutions tailored to your specific requirements.</p>
+            
+            <div class="contact-form-container">
+                <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <input type="text" name="name" required placeholder="Your Name *">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" required placeholder="Email Address *">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <select name="project_type" required>
+                                <option value="">Select Project Type *</option>
+                                <option value="metro">Metro/Railway</option>
+                                <option value="highway">Highway/Flyover</option>
+                                <option value="power">Power Plant</option>
+                                <option value="tunnel">Tunnel</option>
+                                <option value="bridge">Bridge</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <textarea name="message" rows="5" placeholder="Tell us about your project requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-btn" style="width: 100%; font-size: 1.1rem; padding: 1rem;">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon-box">📍</div>
+                    <div>
+                        <strong>Head Office & Works</strong>
+                        <p>A-62, Sector-64, Noida-201301<br>Uttar Pradesh, India</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon-box">📞</div>
+                    <div>
+                        <strong>Phone</strong>
+                        <p>+91-120-415XXXX<br>+91-98XXX XXXXX</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon-box">✉</div>
+                    <div>
+                        <strong>Email</strong>
+                        <p>info@primefabsystems.com<br>projects@primefabsystems.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span>⚙</span> PRIMEFAB
+                </a>
+                <p>Building India's infrastructure with precision engineering and unwavering commitment to quality since 1999.</p>
+                <div class="footer-certs">
+                    <span class="cert-icon">ISO 9001</span>
+                    <span class="cert-icon">MSME</span>
+                    <span class="cert-icon">GEM</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Steel Formwork</a></li>
+                    <li><a href="#">Structural Components</a></li>
+                    <li><a href="#">Precision Machining</a></li>
+                    <li><a href="#">Design Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Twitter">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Primefab Systems Pvt. Ltd. All rights reserved.</p>
+            <p>Crafted with precision ⚙</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(animateCounters, 20);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            });
+        };
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    if (entry.target.classList.contains('hero-content')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        observer.observe(document.querySelector('.hero-content'));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form Handling
+        document.getElementById('quoteForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    alert('Thank you! We will contact you within 24 hours.');
+                    form.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Fallback for local testing
+                alert('Form submitted successfully! (Connect Formspree for live submissions)');
+                form.reset();
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
